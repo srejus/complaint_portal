@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Gov Complaint Portal</title>
+    <meta name="description" content="Free bootstrap template Atlas">
+    <link rel="icon" href="{% static 'img/favicon.png' %}" sizes="32x32" type="image/png">
+    <!-- custom.css -->
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <!-- bootstrap.min.css -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+	<!-- font-awesome -->
+    <link rel="stylesheet" href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    
+    <!-- AOS -->
+    <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+</head>
+
+<body>
+    <!-- banner -->
+    <div class="jumbotron jumbotron-fluid" id="banner" style="background-image: url(/static/img/banner-bk.jpg);">
+        <div class="container text-center text-md-left">
+            <header>
+                <div class="row justify-content-between">
+                    <div class="col-2" onclick="window.location.href='/'">
+                        <img src="{% static 'img/logo.png' %}" alt="logo">
+                    </div>
+                    <div class="col-6 align-self-center text-right">
+                        <a href="/accounts/login/" class="text-white lead">Login</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="/accounts/signup" class="text-white lead">Register</a>
+                    </div>
+                    
+                </div>
+            </header>
+           
+            <!-- Main section starts -->
+            <br><br><br>
+            <style>
+                table{
+                    color: white;
+                }
+
+                @media (max-width: 576px) {
+                .table-responsive {
+                    overflow-x: auto;
+                }
+                }
+            </style>
+            <div class="container" style="color: white;">
+                <h1 style="text-align: center;color: white;">View Complaint {{complaint.complaint_title}}</h1><br>
+                <h5><b>[Q] {{complaint.complaint_title}}</b></h5><br>
+                <p>{{complaint.complaint_desc}}</p><br>
+                <p>Created at : {{complaint.created_at}}</p>
+                <p>STATUS : {{complaint.status}}</p>
+                
+                
+                <br><br>
+
+                {% if not complaint.employee_response %}
+                <p>Your response is pending</p>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <textarea name="reply" class="form-control" style="resize: none;height: 150px;"
+                    placeholder="Enter Your Response....*" cols="30" rows="10"></textarea><br>
+                    <button class="btn btn-primary">Submit</button>
+                </form>
+                {% else %}
+                <p>Employee Response : {{complaint.employee_response}}</p>
+                <p>Employee Responded At : {{complaint.employee_response_added_at}}</p>
+                {% endif %}
+              </div>
+            <!-- Main Section Ends -->
+            <br><br><br><br>
+        </div>
+    </div>
+    
+    
+    
+	<!-- copyright -->
+	<div class="jumbotron jumbotron-fluid" id="copyright">
+        <div class="container">
+            <div class="row justify-content-between">
+            	<div class="col-md-6 text-white align-self-center text-center text-md-left my-2">
+                    Copyright © 2018 Chen, Yi-Ya.
+                </div>
+                <div class="col-md-6 align-self-center text-center text-md-right my-2" id="social-media">
+                    <a href="#" class="d-inline-block text-center ml-2">
+                    	<i class="fa fa-facebook" aria-hidden="true"></i>
+                    </a>
+                    <a href="#" class="d-inline-block text-center ml-2">
+                    	<i class="fa fa-twitter" aria-hidden="true"></i>
+                    </a>
+                    <a href="#" class="d-inline-block text-center ml-2">
+                    	<i class="fa fa-medium" aria-hidden="true"></i>
+                    </a>
+                    <a href="#" class="d-inline-block text-center ml-2">
+                    	<i class="fa fa-linkedin" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- AOS -->
+    <script src="{% static 'js/aos.js' %}"></script>
+    <script>
+      AOS.init({
+      });
+    </script>
+</body>
+
+</html>

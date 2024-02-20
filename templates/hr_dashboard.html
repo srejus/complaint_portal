@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Gov Complaint Portal | Hr Dashboard</title>
+    <meta name="description" content="Free bootstrap template Atlas">
+    <link rel="icon" href="{% static 'img/favicon.png' %}" sizes="32x32" type="image/png">
+    <!-- custom.css -->
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <!-- bootstrap.min.css -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+	<!-- font-awesome -->
+    <link rel="stylesheet" href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    
+    <!-- AOS -->
+    <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+</head>
+
+<body>
+    <!-- banner -->
+    <div class="jumbotron jumbotron-fluid" id="banner" style="background-image: url(/static/img/banner-bk.jpg);">
+        <div class="container text-center text-md-left">
+            <header>
+                <div class="row justify-content-between">
+                    <div class="col-2" onclick="window.location.href='/'">
+                        <img src="{% static 'img/logo.png' %}" alt="logo">
+                    </div>
+                    <div class="col-6 align-self-center text-right">
+                        <a href="/accounts/login/" class="text-white lead">Login</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="/accounts/signup" class="text-white lead">Register</a>
+                    </div>
+                    
+                </div>
+            </header>
+           
+            <!-- Main section starts -->
+            <br><br><br>
+            <div class="row">
+                <div class="col">
+                    <div class="card p-3" onclick="window.location.href='/hr/employees'">
+                        <h1>Employees</h1>
+                        <p>View all Employees</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card p-3" onclick="window.location.href='/hr/complaints'">
+                        <h1>Manage Complaints</h1>
+                        <p>View and manage the complaints</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Main Section Ends -->
+            <br><br><br><br>
+        </div>
+    </div>
+    
+    
+    
+	<!-- copyright -->
+	<div class="jumbotron jumbotron-fluid" id="copyright">
+        <div class="container">
+            <div class="row justify-content-between">
+            	<div class="col-md-6 text-white align-self-center text-center text-md-left my-2">
+                    Copyright © 2018 Chen, Yi-Ya.
+                </div>
+                <div class="col-md-6 align-self-center text-center text-md-right my-2" id="social-media">
+                    <a href="#" class="d-inline-block text-center ml-2">
+                    	<i class="fa fa-facebook" aria-hidden="true"></i>
+                    </a>
+                    <a href="#" class="d-inline-block text-center ml-2">
+                    	<i class="fa fa-twitter" aria-hidden="true"></i>
+                    </a>
+                    <a href="#" class="d-inline-block text-center ml-2">
+                    	<i class="fa fa-medium" aria-hidden="true"></i>
+                    </a>
+                    <a href="#" class="d-inline-block text-center ml-2">
+                    	<i class="fa fa-linkedin" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- AOS -->
+    <script src="{% static 'js/aos.js' %}"></script>
+    <script>
+      AOS.init({
+      });
+    </script>
+</body>
+
+</html>

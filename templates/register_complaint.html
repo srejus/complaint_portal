@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Gov Complaint Portal | Register Complaint</title>
+    <meta name="description" content="Free bootstrap template Atlas">
+    <link rel="icon" href="{% static 'img/favicon.png' %}" sizes="32x32" type="image/png">
+    <!-- custom.css -->
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <!-- bootstrap.min.css -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+	<!-- font-awesome -->
+    <link rel="stylesheet" href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    
+    <!-- AOS -->
+    <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+</head>
+
+<body>
+    <!-- banner -->
+    <div class="jumbotron jumbotron-fluid" id="banner" style="background-image: url(/static/img/banner-bk.jpg);">
+        <div class="container text-center text-md-left">
+            <header>
+                <div class="row justify-content-between">
+                    <div class="col-2" onclick="window.location.href='/'">
+                        <img src="{% static 'img/logo.png' %}" alt="logo">
+                    </div>
+                    <div class="col-6 align-self-center text-right">
+                        <a href="/accounts/login/" class="text-white lead">Login</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="/accounts/signup" class="text-white lead">Register</a>
+                    </div>
+                    
+                </div>
+            </header>
+           
+            <!-- Main section starts -->
+            <br><br><br>
+            <h1 style="text-align: center;color: white;">Register Complaint</h1><br>
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="text" name="complaint_title" class="form-control" placeholder="Compliant Title*" required><br>
+                <textarea name="complaint_desc" style="resize: none;height: 150px;" class="form-control" placeholder="Complaint Description...*" required></textarea><br>
+
+                <select name="eid" class="form-control">
+                    {% for employee in employees %}
+                    <option value="{{employee.id}}">{{employee.user.full_name}} - {{employee.department.department_name}} - {{employee.category.category_name}}</option>
+                    {% endfor %}
+                </select><br>
+
+                <label for="file" style="color: white;">Complaint Proof &nbsp;&nbsp;&nbsp;</label>
+                <input type="file" name="proof" required><br><br>
+                <input type="submit" class="form-control" style="background-color: blue;color: white;" value="Submit"><br>
+
+            </form>
+
+            <!-- Main Section Ends -->
+            <br><br><br><br>
+        </div>
+    </div>
+    
+    
+    
+	<!-- copyright -->
+	<div class="jumbotron jumbotron-fluid" id="copyright">
+        <div class="container">
+            <div class="row justify-content-between">
+            	<div class="col-md-6 text-white align-self-center text-center text-md-left my-2">
+                    Copyright © 2018 Chen, Yi-Ya.
+                </div>
+                <div class="col-md-6 align-self-center text-center text-md-right my-2" id="social-media">
+                    <a href="#" class="d-inline-block text-center ml-2">
+                    	<i class="fa fa-facebook" aria-hidden="true"></i>
+                    </a>
+                    <a href="#" class="d-inline-block text-center ml-2">
+                    	<i class="fa fa-twitter" aria-hidden="true"></i>
+                    </a>
+                    <a href="#" class="d-inline-block text-center ml-2">
+                    	<i class="fa fa-medium" aria-hidden="true"></i>
+                    </a>
+                    <a href="#" class="d-inline-block text-center ml-2">
+                    	<i class="fa fa-linkedin" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- AOS -->
+    <script src="{% static 'js/aos.js' %}"></script>
+    <script>
+      AOS.init({
+      });
+    </script>
+</body>
+
+</html>

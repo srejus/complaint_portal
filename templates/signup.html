@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Gov Complaint Portal | Create Account</title>
+    <meta name="description" content="Free bootstrap template Atlas">
+    <link rel="icon" href="{% static 'img/favicon.png' %}" sizes="32x32" type="image/png">
+    <!-- custom.css -->
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <!-- bootstrap.min.css -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+	<!-- font-awesome -->
+    <link rel="stylesheet" href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    
+    <!-- AOS -->
+    <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+</head>
+
+<body>
+    <!-- banner -->
+    <div class="jumbotron jumbotron-fluid" id="banner" style="background-image: url(/static/img/banner-bk.jpg);">
+        <div class="container text-center text-md-left">
+            <header>
+                <div class="row justify-content-between">
+                    <div class="col-2" onclick="window.location.href='/'">
+                        <img src="{% static 'img/logo.png' %}" alt="logo">
+                    </div>
+                    <div class="col-6 align-self-center text-right">
+                        <a href="/accounts/login/" class="text-white lead">Login</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="/accounts/signup" class="text-white lead">Register</a>
+                    </div>
+                    
+                </div>
+            </header>
+           
+            <!-- Main section starts -->
+            <br><br><br>
+            <h1 style="text-align: center;color: white;">Signup</h1><br>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <input type="text" name="username" class="form-control" placeholder="Enter Username...*" required><br>
+                <input type="text" name="full_name" class="form-control" placeholder="Enter Fullname...*" required><br>
+                <input type="email" name="email" class="form-control" placeholder="Enter Email...*" required><br>
+                <input type="number" name="phone" class="form-control" placeholder="Enter Phone...*" required><br>
+                <input type="number" name="pincode" class="form-control" placeholder="Enter Pincode...*" required><br>
+                <input type="text" name="state" class="form-control" placeholder="Enter State...*" required><br>
+                <input type="text" name="country" class="form-control" placeholder="Enter Country...*" required><br>
+                <input type="text" name="address" class="form-control" placeholder="Enter Address...*" required><br>
+                <input type="password" name="password" class="form-control" placeholder="Enter Password...*" required><br>
+                <input type="password" name="password2" class="form-control" placeholder="Confirm Password...*" required><br>
+                <input type="submit" class="form-control" style="background-color: blue;color: white;" value="Create Account"><br>
+
+                <a href="/accounts/login/" style="color: white;">Login to my Account</a>
+            </form>
+
+            <!-- Main Section Ends -->
+            <br><br><br><br>
+        </div>
+    </div>
+
+    {% if err %}
+    <script>
+        alert('{{err}}');
+        location.href='/accounts/signup';
+    </script>
+    {% endif %}
+    
+    
+    
+	<!-- copyright -->
+	<div class="jumbotron jumbotron-fluid" id="copyright">
+        <div class="container">
+            <div class="row justify-content-between">
+            	<div class="col-md-6 text-white align-self-center text-center text-md-left my-2">
+                    Copyright © 2018 Chen, Yi-Ya.
+                </div>
+                <div class="col-md-6 align-self-center text-center text-md-right my-2" id="social-media">
+                    <a href="#" class="d-inline-block text-center ml-2">
+                    	<i class="fa fa-facebook" aria-hidden="true"></i>
+                    </a>
+                    <a href="#" class="d-inline-block text-center ml-2">
+                    	<i class="fa fa-twitter" aria-hidden="true"></i>
+                    </a>
+                    <a href="#" class="d-inline-block text-center ml-2">
+                    	<i class="fa fa-medium" aria-hidden="true"></i>
+                    </a>
+                    <a href="#" class="d-inline-block text-center ml-2">
+                    	<i class="fa fa-linkedin" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- AOS -->
+    <script src="{% static 'js/aos.js' %}"></script>
+    <script>
+      AOS.init({
+      });
+    </script>
+</body>
+
+</html>
