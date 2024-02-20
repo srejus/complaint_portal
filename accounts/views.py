@@ -52,6 +52,7 @@ class SignupView(View):
         state = request.POST.get("state")
         country = request.POST.get("country")
         address = request.POST.get("address")
+        user_type = request.POST.get("user_type")
         
         if password != password2:
             err = "Password not matching!"
@@ -70,7 +71,7 @@ class SignupView(View):
         user = User.objects.create_user(username=username,email=email,password=password)
         acc = Account.objects.create(user=user,full_name=full_name,
                                      phone=phone, email=email,pincode=pincode,
-                                     address=address,country=country,state=state)
+                                     address=address,country=country,state=state,user_type=user_type)
 
         return redirect('/accounts/login')
         
