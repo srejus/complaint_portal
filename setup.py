@@ -13,6 +13,20 @@ root_directory = os.getcwd()  # Change this to your desired root directory
 
 project_folder = find_project_folder(root_directory)
 
+django_install_command = ["pip","install","django"]
+
+try:
+    subprocess.run(django_install_command, check=True)
+except subprocess.CalledProcessError as e:
+    print("Error:", e)
+
+pillow_install_command = ["pip","install","pillow"]
+
+try:
+    subprocess.run(pillow_install_command, check=True)
+except subprocess.CalledProcessError as e:
+    print("Error:", e)
+
 
 git_command = ["git","pull","origin","master"]
 
