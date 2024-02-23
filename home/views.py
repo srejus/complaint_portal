@@ -1,10 +1,13 @@
 from django.shortcuts import render,redirect
 from django.views import View
-
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 from accounts.models import Account
 
 
 # Create your views here.
+
+@method_decorator(login_required, name='dispatch')
 class IndexView(View):
     def get(self,request):
         if request.user.is_authenticated:
