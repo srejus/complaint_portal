@@ -11,7 +11,7 @@ from complaints.models import Employee,Complaint
 
 def is_hr_user(request):
     acc = Account.objects.get(user=request.user)
-    if acc.user_type == 'HR':
+    if acc.user_type == 'ADMIN':
         return True
     return False
 

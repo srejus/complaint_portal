@@ -11,7 +11,7 @@ class IndexView(View):
             acc = Account.objects.get(user=request.user)
             if acc.user_type == 'GOV_EMPLOYEE':
                 return redirect("/employee")
-            if acc.user_type == 'HR':
+            if acc.user_type == 'ADMIN':
                 return redirect("/hr")
             
         return render(request,'index.html')

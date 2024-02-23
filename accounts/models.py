@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 class Account(models.Model):
     USER_TYPE_CHOICES = (
         ('USER','USER'),
-        ('HR','HR'),
+        ('ADMIN','ADMIN'),
         ('GOV_EMPLOYEE','GOV_EMPLOYEE'),
     )
     user = models.ForeignKey(User,on_delete=models.CASCADE,related_name='user')
