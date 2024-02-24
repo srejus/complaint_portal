@@ -14,7 +14,8 @@ from .models import *
 class LoginView(View):
     def get(self,request):
         err = request.GET.get("err")
-        return render(request,'login.html',{'err':err})
+        type_ = request.GET.get("type_","User")
+        return render(request,'login.html',{'err':err,'type_':type_})
 
     def post(self,request):
         username = request.POST.get("username")

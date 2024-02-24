@@ -37,14 +37,18 @@
            
             <!-- Main section starts -->
             <br><br><br>
-            <h1 style="text-align: center;color: white;">Login</h1><br>
+            <h1 style="text-align: center;color: white;">Login as {{type_}}</h1><br>
             <form action="" method="POST">
                 {% csrf_token %}
                 <input type="text" name="username" class="form-control" placeholder="Enter Username...*" required><br>
                 <input type="password" name="password" class="form-control" placeholder="Enter Password...*" required><br>
                 <input type="submit" class="form-control" style="background-color: blue;color: white;" value="Login"><br>
 
-                <a href="/accounts/signup" style="color: white;">Create new Account</a>
+                <a href="/accounts/signup" style="color: white;">Create new Account</a><br>
+
+                <a href="/accounts/login?type_=Admin" style="color: white;">Login As Admin</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="/accounts/login?type_=User" style="color: white;">Login As User</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="/accounts/login?type_=Employee" style="color: white;">Login as Employee</a>
             </form>
 
             <!-- Main Section Ends -->
