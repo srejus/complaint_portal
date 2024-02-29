@@ -20,21 +20,37 @@ class LoginView(View):
     def post(self,request):
         username = request.POST.get("username")
         password = request.POST.get("password")
+        user_type = request.POST.get("user_type")
+
+        print('User type : ',user_type)
         
         user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            next = request.GET.get("next")
-            if next:
-                return redirect(next)
+        if user is not None:            
+            acc = Account.objects.get(user=user)
+            print("DATA : ",acc.user_type )
+            if user_type == 'user' and acc.user_type == 'USER':
+                login(request, user)
+                next = request.GET.get("next")
+                if next:
+                    return redirect(next)
+                return redirect("/")
             
-            acc = Account.objects.get(user=request.user)
-            if acc.user_type == 'GOV_EMPLOYEE':
-                return redirect("/employee/")
-            
-            return redirect("/")
+            if user_type == 'employee' and acc.user_type == 'GOV_EMPLOYEE':
+                login(request, user)
+                next = request.GET.get("next")
+                if next:
+                    return redirect(next)
+                return redirect("/")
+        
+            if user_type == 'admin' and acc.user_type == 'ADMIN':
+                login(request, user)
+                next = request.GET.get("next")
+                if next:
+                    return redirect(next)
+                return redirect("/")
+
         err = "Invalid credentails!"
-        return redirect(f"/account/login/?err={err}")
+        return redirect(f"/accounts/login/?err={err}")
     
 
 class SignupView(View):
