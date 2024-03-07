@@ -7,7 +7,7 @@ from accounts.models import Account
 
 # Create your views here.
 
-@method_decorator(login_required, name='dispatch')
+# @method_decorator(login_required, name='dispatch')
 class IndexView(View):
     def get(self,request):
         if request.user.is_authenticated:
@@ -16,5 +16,7 @@ class IndexView(View):
                 return redirect("/employee")
             if acc.user_type == 'ADMIN':
                 return redirect("/hr")
+            if acc.user_type == 'USER':
+                return render(request,'index.html')
             
-        return render(request,'index.html')
+        return render(request,'index_no_login.html')
