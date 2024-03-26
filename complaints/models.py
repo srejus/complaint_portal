@@ -19,8 +19,8 @@ class Category(models.Model):
 
 class Employee(models.Model):
     user = models.ForeignKey(Account,on_delete=models.CASCADE,related_name='employee')
-    department = models.ForeignKey(Department,on_delete=models.CASCADE,related_name='employee_department')
-    category = models.ForeignKey(Category,on_delete=models.CASCADE,related_name='employee_category')
+    department = models.ForeignKey(Department,on_delete=models.CASCADE,related_name='employee_department',null=True,blank=True)
+    category = models.ForeignKey(Category,on_delete=models.CASCADE,related_name='employee_category',blank=True,null=True)
 
 
 class Complaint(models.Model):

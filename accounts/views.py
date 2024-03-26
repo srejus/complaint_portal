@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 
 from .models import *
+from complaints.models import Employee
 
 # Create your views here.
 
@@ -89,6 +90,9 @@ class SignupView(View):
         acc = Account.objects.create(user=user,full_name=full_name,
                                      phone=phone, email=email,pincode=pincode,
                                      address=address,country=country,state=state,user_type=user_type)
+        
+        if user_type == 'GOV_EMPLOYEE':
+            Employee.objects.create(user=acc)
 
         return redirect('/accounts/login')
         
