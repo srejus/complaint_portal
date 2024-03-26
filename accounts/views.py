@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 
 from .models import *
-from complaints.models import Employee
+from complaints.models import Employee,Department,Category
 
 # Create your views here.
 
@@ -101,3 +101,60 @@ class LogoutView(View):
     def get(self,request):
         logout(request)
         return redirect("/accounts/login/")
+    
+
+@method_decorator(login_required,name='dispatch')
+class ProfileView(View):
+    def get(self,request):
+        acc = Account.objects.get(user=request.user)
+        emp = None
+        if acc.user_type == 'GOV_EMPLOYEE':
+            emp = Employee.objects.filter(user=acc).last()
+        return render(request,'profile.html',{'acc':acc,'emp':emp})
+    
+
+
+@method_decorator(login_required,name='dispatch')
+class EditProfileView(View):
+    def get(self,request):
+        acc = Account.objects.get(user=request.user)
+        emp = None
+        dept = None
+        category = None
+
+        if acc.user_type == 'GOV_EMPLOYEE':
+            emp = Employee.objects.filter(user=acc).last()
+            dept = Department.objects.all()
+            category = Category.objects.all()
+        return render(request,'edit_profile.html',{'acc':acc,'emp':emp,'dept':dept,'category':category})
+    
+
+    def post(self,request):
+        full_name = request.POST.get("full_name")
+        email = request.POST.get("email")
+        phone = request.POST.get("phone")
+        pincode = request.POST.get("pincode")
+        address = request.POST.get("address")
+        department_id = request.POST.get("dept")
+        category_id = request.POST.get("category")
+
+        acc = Account.objects.get(user=request.user)
+        emp = Employee.objects.filter(user=acc).last()
+
+        dept = Department.objects.get(id=department_id)
+        category = Category.objects.get(id=category_id)
+
+        acc.full_name = full_name
+        acc.email = email
+        acc.phone = phone
+        acc.address = address
+        acc.pincode = pincode
+
+        if acc.user_type == 'GOV_EMPLOYEE':
+            emp.category = category
+            emp.department = dept
+            emp.save()
+
+        acc.save()
+
+        return redirect("/accounts/profile")

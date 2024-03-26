@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Gov Complaint Portal</title>
+    <title>Gov Complaint Portal | Profile</title>
     <meta name="description" content="Free bootstrap template Atlas">
     <link rel="icon" href="{% static 'img/favicon.png' %}" sizes="32x32" type="image/png">
     <!-- custom.css -->
@@ -41,6 +41,7 @@
                 table{
                     color: white;
                 }
+                
 
                 @media (max-width: 576px) {
                 .table-responsive {
@@ -49,31 +50,54 @@
                 }
             </style>
             <div class="container">
-                <h1 style="text-align: center;color: white;">Complaints</h1><br>
+                <h1 style="text-align: center;color: white;">Profile</h1><br>
                 <div class="table-responsive">
                   <table class="table table-striped">
-                    <thead>
-                      <tr>
-                        <th style="width: 100px;">Complaint ID</th>
-                        <th style="width: 200px;">Complaint Title</th>
-                        <th style="width: 100px;">Status</th>
-                        <th style="width: 100px;">Action</th>
-                      </tr>
-                    </thead>
+                   
                     <tbody>
-                        {% for c in complaints %}
+                       
                       <tr>
-                        <td style="width: 100px;"># {{c.id}}</td>
-                        <td style="width: 200px;">{{c.complaint_title}}</td>
-                        <td style="width: 100px;">{{c.status}}</td>
-                        <td style="min-width: 100px;">
-                            <button class="btn btn-primary" onclick="window.location.href='/employee/{{c.id}}'">View Complaint</button>
-                        </td>
+                        <td style="width: 200px;">FULL NAME</td>
+                        <td style="width: 100px;">{{acc.full_name}}</td>
                       </tr>
-                      {% endfor %}
+
+                      <tr>
+                        <td style="width: 200px;">EMAIL</td>
+                        <td style="width: 100px;">{{acc.email}}</td>
+                      </tr>
+                      
+                      <tr>
+                        <td style="width: 200px;">PHONE</td>
+                        <td style="width: 100px;">{{acc.phone}}</td>
+                      </tr>
+
+                      <tr>
+                        <td style="width: 200px;">ADDRESS</td>
+                        <td style="width: 100px;">{{acc.address}}</td>
+                      </tr>
+
+                      <tr>
+                        <td style="width: 200px;">PINCODE</td>
+                        <td style="width: 100px;">{{acc.pincode}}</td>
+                      </tr>
+                      {% if emp %}
+                      <tr>
+                        <td style="width: 200px;">DEPARTMENT</td>
+                        <td style="width: 100px;">{{emp.department.department_name}}</td>
+                      </tr>
+
+                      <tr>
+                        <td style="width: 200px;">CATEGORY</td>
+                        <td style="width: 100px;">{{emp.category.category_name}}</td>
+                      </tr>
+                      {% endif %}
+                     
                       <!-- Add more rows as needed -->
                     </tbody>
                   </table>
+
+                  <button class="btn btn-danger"
+                   onclick="window.location.href='/accounts/profile/edit'">Edit Profile</button>
                 </div>
               </div>
             <!-- Main Section Ends -->

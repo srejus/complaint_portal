@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Gov Complaint Portal</title>
+    <title>Gov Complaint Portal | Edit Profile</title>
     <meta name="description" content="Free bootstrap template Atlas">
     <link rel="icon" href="{% static 'img/favicon.png' %}" sizes="32x32" type="image/png">
     <!-- custom.css -->
@@ -28,58 +28,74 @@
                         <img src="{% static 'img/logo.png' %}" alt="logo">
                     </div>
                     <div class="col-6 align-self-center text-right">
-                        <a href="/accounts/profile" class="text-white lead">Profile</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="/accounts/logout" class="text-white lead">Logout</a>
+                        <!-- <a href="/accounts/login/" class="text-white lead">Login</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="/accounts/signup" class="text-white lead">Register</a> -->
                     </div>
                     
                 </div>
             </header>
+
+            <style>
+                label{
+                    color: white;
+                }
+            </style>
            
             <!-- Main section starts -->
             <br><br><br>
-            <style>
-                table{
-                    color: white;
-                }
+            <h1 style="text-align: center;color: white;">Edit Profile</h1><br>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <label for="username">Full Name:</label>
+                <input type="text" name="full_name" id="username" class="form-control" placeholder="Enter Full name...*" required value="{{acc.full_name}}"><br>
+         
+                
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" class="form-control" placeholder="Enter Email...*" required value="{{acc.email}}"><br>
+                
+                <label for="phone">Phone:</label>
+                <input type="number" name="phone" id="phone" class="form-control" placeholder="Enter Phone...*" required value="{{acc.phone}}"><br>
+                
+                <label for="pincode">Pincode:</label>
+                <input type="number" name="pincode" id="pincode" class="form-control" placeholder="Enter Pincode...*" required value="{{acc.pincode}}"><br>
+                
+                <label for="address">Address:</label>
+                <input type="text" name="address" id="address" class="form-control" placeholder="Enter Address...*" required value="{{acc.address}}"><br>
 
-                @media (max-width: 576px) {
-                .table-responsive {
-                    overflow-x: auto;
-                }
-                }
-            </style>
-            <div class="container">
-                <h1 style="text-align: center;color: white;">Complaints</h1><br>
-                <div class="table-responsive">
-                  <table class="table table-striped">
-                    <thead>
-                      <tr>
-                        <th style="width: 100px;">Complaint ID</th>
-                        <th style="width: 200px;">Complaint Title</th>
-                        <th style="width: 100px;">Status</th>
-                        <th style="width: 100px;">Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                        {% for c in complaints %}
-                      <tr>
-                        <td style="width: 100px;"># {{c.id}}</td>
-                        <td style="width: 200px;">{{c.complaint_title}}</td>
-                        <td style="width: 100px;">{{c.status}}</td>
-                        <td style="min-width: 100px;">
-                            <button class="btn btn-primary" onclick="window.location.href='/employee/{{c.id}}'">View Complaint</button>
-                        </td>
-                      </tr>
-                      {% endfor %}
-                      <!-- Add more rows as needed -->
-                    </tbody>
-                  </table>
-                </div>
-              </div>
+                <br><br>
+                {% if emp %}
+                <h6 style="color: white;">Employee Section</h6><br>
+                <label for="">Department</label>
+                <select name="dept" class="form-control">
+                    {% for d in dept %}
+                        <option value="{{d.id}}">{{d.department_name}}</option>
+                    {% endfor %}
+                </select><br>
+
+                <label for="">Category</label>
+                <select name="category" class="form-control">
+                    {% for c in category %}
+                        <option value="{{c.id}}">{{c.category_name}}</option>
+                    {% endfor %}
+                </select><br>
+                {% endif %}
+                
+                <br><br>
+                <input type="submit" class="form-control" style="background-color: blue;color: white;" value="Update profile"><br>
+
+            </form>
+
             <!-- Main Section Ends -->
             <br><br><br><br>
         </div>
     </div>
+
+    {% if err %}
+    <script>
+        alert('{{err}}');
+        location.href='/accounts/signup';
+    </script>
+    {% endif %}
     
     
     
