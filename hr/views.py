@@ -5,7 +5,7 @@ from django.utils.decorators import method_decorator
 from django.utils import timezone
 
 from accounts.models import Account
-from complaints.models import Employee,Complaint
+from complaints.models import Employee,Complaint,Category,Department
 
 # Create your views here.
 
@@ -57,3 +57,49 @@ class HrEmployeesView(View):
         
         employees = Employee.objects.all()
         return render(request,'hr_employees.html',{'employees':employees})
+    
+
+
+
+@method_decorator(login_required, name='dispatch')
+class HrCategoryView(View):
+    def get(self,request):
+        if not is_hr_user(request):
+            return redirect("/")
+        
+        category = Category.objects.all()
+        return render(request,'hr_category.html',{'category':category})
+    
+
+
+@method_decorator(login_required, name='dispatch')
+class HrDepartmentView(View):
+    def get(self,request):
+        if not is_hr_user(request):
+            return redirect("/")
+        
+        department = Department.objects.all()
+        return render(request,'hr_department.html',{'department':department})
+
+
+@method_decorator(login_required, name='dispatch')
+class HrAddDepartmentView(View):
+    def get(self,request):
+        return render(request,'hr_department_add.html')
+    
+    def post(self,request):
+        dept_name = request.POST.get("dept_name")
+        Department.objects.create(department_name=dept_name)
+        return redirect("/hr/department")
+
+
+@method_decorator(login_required, name='dispatch')
+class HrAddCategoryView(View):
+    def get(self,request):
+        return render(request,'hr_category_add.html')
+    
+    def post(self,request):
+        dept_name = request.POST.get("dept_name")
+        Category.objects.create(category_name=dept_name)
+        return redirect("/hr/category")
+    

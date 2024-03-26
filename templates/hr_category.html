@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Gov Complaint Portal | Hr Dashboard</title>
+    <title>Gov Complaint Portal</title>
     <meta name="description" content="Free bootstrap template Atlas">
     <link rel="icon" href="{% static 'img/favicon.png' %}" sizes="32x32" type="image/png">
     <!-- custom.css -->
@@ -29,9 +29,7 @@
                     </div>
                     <div class="col-6 align-self-center text-right">
                         <a href="/hr/employees" class="text-white lead">View Employees</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="/hr/complaints" class="text-white lead">Manage Complaints</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                        
-                        <a href="/accounts/logout" class="text-white lead">Logout</a>
+                        <a href="/hr/complaints" class="text-white lead">Manage Complaints</a>
                     </div>
                     
                 </div>
@@ -39,36 +37,43 @@
            
             <!-- Main section starts -->
             <br><br><br>
-            <div class="row" style="flex-wrap: wrap;">
-                <div class="col">
-                    <div class="card p-3 m-3" style="width: 450px;" onclick="window.location.href='/hr/employees'">
-                        <h1>Employees</h1>
-                        <p>View all Employees</p>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card p-3 m-3" style="width: 450px;" onclick="window.location.href='/hr/complaints'">
-                        <h1>Manage Complaints</h1>
-                        <p>View and manage the complaints</p>
-                    </div>
-                </div>
+            <style>
+                table{
+                    color: white;
+                }
 
-                <div class="col">
-                    <div class="card p-3 m-3" style="width: 450px;" onclick="window.location.href='/hr/department'">
-                        <h1>Departments</h1>
-                        <p>View and manage the departments</p>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card p-3 m-3" style="width: 450px;" onclick="window.location.href='/hr/category'">
-                        <h1>Category</h1>
-                        <p>View and manage the categories</p>
-                    </div>
-                </div>
+                @media (max-width: 576px) {
+                .table-responsive {
+                    overflow-x: auto;
+                }
+                }
+            </style>
+            <div class="container">
+                <h1 style="text-align: center;color: white;">Category</h1><br>
+                <button class="btn btn-danger" style="float: right;" 
+                onclick="window.location.href='/hr/category/add'"><i class="fa fa-plus"></i> Add New</button><br>
+                <div class="table-responsive"><br>
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                          <th style="width: 100px;">Category ID</th>
+                          <th style="width: 100px;">Category Name</th>
 
-
-            </div>
-            
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for e in category %}
+                      <tr>
+                        <td style="width: 100px;"># {{e.id}}</td>
+                        <td style="width: 100px;">{{e.category_name}}</td>
+                        
+                      </tr>
+                      {% endfor %}
+                      <!-- Add more rows as needed -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             <!-- Main Section Ends -->
             <br><br><br><br>
         </div>

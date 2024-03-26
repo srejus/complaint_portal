@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Gov Complaint Portal | Hr Dashboard</title>
+    <title>Gov Complaint Portal</title>
     <meta name="description" content="Free bootstrap template Atlas">
     <link rel="icon" href="{% static 'img/favicon.png' %}" sizes="32x32" type="image/png">
     <!-- custom.css -->
@@ -29,9 +29,7 @@
                     </div>
                     <div class="col-6 align-self-center text-right">
                         <a href="/hr/employees" class="text-white lead">View Employees</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="/hr/complaints" class="text-white lead">Manage Complaints</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                        
-                        <a href="/accounts/logout" class="text-white lead">Logout</a>
+                        <a href="/hr/complaints" class="text-white lead">Manage Complaints</a>
                     </div>
                     
                 </div>
@@ -39,36 +37,26 @@
            
             <!-- Main section starts -->
             <br><br><br>
-            <div class="row" style="flex-wrap: wrap;">
-                <div class="col">
-                    <div class="card p-3 m-3" style="width: 450px;" onclick="window.location.href='/hr/employees'">
-                        <h1>Employees</h1>
-                        <p>View all Employees</p>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card p-3 m-3" style="width: 450px;" onclick="window.location.href='/hr/complaints'">
-                        <h1>Manage Complaints</h1>
-                        <p>View and manage the complaints</p>
-                    </div>
-                </div>
+            <style>
+                table{
+                    color: white;
+                }
 
-                <div class="col">
-                    <div class="card p-3 m-3" style="width: 450px;" onclick="window.location.href='/hr/department'">
-                        <h1>Departments</h1>
-                        <p>View and manage the departments</p>
-                    </div>
+                @media (max-width: 576px) {
+                .table-responsive {
+                    overflow-x: auto;
+                }
+                }
+            </style>
+            <div class="container">
+                <h1 style="text-align: center;color: white;">Add Department</h1><br>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <input type="text" class="form-control" placeholder="Enter Department Name...*" required name="dept_name"><br>
+                    <button class="btn btn-danger">Add</button>
+                </form>
                 </div>
-                <div class="col">
-                    <div class="card p-3 m-3" style="width: 450px;" onclick="window.location.href='/hr/category'">
-                        <h1>Category</h1>
-                        <p>View and manage the categories</p>
-                    </div>
-                </div>
-
-
-            </div>
-            
+              </div>
             <!-- Main Section Ends -->
             <br><br><br><br>
         </div>
