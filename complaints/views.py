@@ -23,12 +23,14 @@ class ComplaintView(View):
 class RegisterComplaintView(View):
     def get(self,request):
         employees = Employee.objects.all()
-        return render(request,'register_complaint.html',{'employees':employees})
+        category = Category.objects.all()
+        return render(request,'register_complaint.html',{'employees':employees,'category':category})
 
     def post(self,request):
         complaint_title = request.POST.get("complaint_title")
         complaint_desc = request.POST.get("complaint_desc")
         eid = request.POST.get("eid")
+        cat_id = request.POST.get("cat_id")
         proof = request.FILES.get("proof")
 
         acc = Account.objects.get(user=request.user)
@@ -46,3 +48,10 @@ class DeleteComplaintView(View):
     def get(self,request,id):
         Complaint.objects.filter(id=id).delete()
         return redirect("/complaints")
+    
+
+@method_decorator(login_required,name='dispatch')
+class ViewComplaintView(View):
+    def get(self,request,id):
+        complaints = Complaint.objects.filter(employee_id__user__user=request.user,id=id).first()
+        return render(request,'user_view_compliant.html',{'complaint':complaints})

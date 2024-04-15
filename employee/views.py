@@ -33,3 +33,15 @@ class EmployeeHomeView(View):
         compliant.employee_response_added_at = timezone.now()
         compliant.save()
         return redirect("/employee/")
+    
+
+@method_decorator(login_required, name='dispatch')
+class EmployeeFileAppealView(View):
+    def post(self,request,id):
+        compaint = Complaint.objects.get(id=id)
+        exp = request.POST.get("exp")
+
+        compaint.appeal_filed = True
+        compaint.appeal_explanation = exp
+        compaint.save()
+        return redirect(f"/employee/{id}")

@@ -67,8 +67,10 @@
                         <td style="width: 100px;"># {{c.id}}</td>
                         <td style="width: 200px;">{{c.complaint_title}}</td>
                         <td style="width: 100px;">{{c.status}}</td>
-                        <td style="min-width: 100px;">
+                        <td style="min-width: 100px;display: flex;">
                             <button class="btn btn-danger" onclick="window.location.href='/complaints/delete/{{c.id}}'">Delete Complaint</button>
+
+                            <button class="btn btn-primary" onclick="window.location.href='/complaints/view/{{c.id}}'">View Complaint</button>
                         </td>
                       </tr>
                       {% endfor %}

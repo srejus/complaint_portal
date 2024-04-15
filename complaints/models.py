@@ -28,15 +28,21 @@ class Complaint(models.Model):
         ('CREATED','CREATED'),
         ('PROCESSING','PROCESSING'),
         ('CLOSED','CLOSED'),
+        ('TAKE_ACTION','TAKE_ACTION'),
+        ('APPEAL_ACCEPTED','APPEAL_ACCEPTED'),
+        ('APPEAL_REJECTED','APPEAL_REJECTED'),
     )
     user = models.ForeignKey(Account,on_delete=models.CASCADE,related_name='complaint_user')
     employee_id = models.ForeignKey(Employee,on_delete=models.CASCADE,related_name='complaint_employee')
     proof = models.FileField(null=True,blank=True)
     complaint_title = models.CharField(max_length=100)
+    category = models.CharField(max_length=100,null=True,blank=True)
     complaint_desc = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
-    status = models.CharField(max_length=50,default='CREATED')
+    status = models.CharField(max_length=50,default='CREATED',choices=STATUS_CHOICES)
     employee_response = models.TextField(null=True,blank=True)
     employee_response_added_at = models.DateTimeField(null=True,blank=True)
     hr_response = models.TextField(null=True,blank=True)
     hr_response_added_at = models.DateTimeField(null=True,blank=True)
+    appeal_filed = models.BooleanField(default=False)
+    appeal_explanation = models.TextField(null=True,blank=True)

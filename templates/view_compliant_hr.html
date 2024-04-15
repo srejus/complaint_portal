@@ -60,6 +60,10 @@
                 
                 <br><br>
 
+                {% if complaint.appeal_explanation %}
+                <p>Appeal Explanation : {{complaint.appeal_explanation}}</p>
+                {% endif %}
+
                 {% if not complaint.hr_response %}
                 <p>Your response is pending</p>
                 <form action="" method="POST">
@@ -69,6 +73,9 @@
                         <option value="NA">Select Status</option>
                         <option value="PROCESSING">PROCESSING</option>
                         <option value="CLOSED">CLOSED</option>
+                        <option value="TAKE_ACTION">TAKE ACTION</option>
+                        <option value="APPEAL_ACCEPTED">APPEAL ACCEPTED</option>
+                        <option value="APPEAL_REJECTED">APPEAL REJECTED</option>
                     </select>
                     <br>
                     <textarea name="reply" class="form-control" style="resize: none;height: 150px;"
@@ -83,6 +90,9 @@
                         <option value="NA">Select Status</option>
                         <option value="PROCESSING">PROCESSING</option>
                         <option value="CLOSED">CLOSED</option>
+                        <option value="TAKE_ACTION">TAKE ACTION</option>
+                        <option value="APPEAL_ACCEPTED">APPEAL ACCEPTED</option>
+                        <option value="APPEAL_REJECTED">APPEAL REJECTED</option>
                     </select>
                     <br>
                     <button class="btn btn-primary">Submit</button>

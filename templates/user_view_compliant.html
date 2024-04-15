@@ -54,36 +54,17 @@
                 <p>{{complaint.complaint_desc}}</p><br>
                 <p>Created at : {{complaint.created_at}}</p>
                 <p>STATUS : {{complaint.status}}</p>
+                {% if complaint.appeal_explanation %}
+                <p>APPEAL EXPLANATION : {{complaint.appeal_explanation}}</p>
+                {% endif %}
                 
                 
                 <br><br>
 
-                {% if not complaint.employee_response %}
-                <p>Your response is pending</p>
-                <form action="" method="POST">
-                    {% csrf_token %}
-                    <textarea name="reply" class="form-control" style="resize: none;height: 150px;"
-                    placeholder="Enter Your Response....*" cols="30" rows="10"></textarea><br>
-                    <button class="btn btn-primary">Submit</button>
-                </form>
-                {% else %}
+               
                 <p>Employee Response : {{complaint.employee_response}}</p>
                 <p>Employee Responded At : {{complaint.employee_response_added_at}}</p>
-                
-                {% if complaint.status == 'TAKE_ACTION' %}
-                {% if complaint.appeal_explanation %}
-
-                {% else %}
-                <br>
-                <h4 style="color: white;">File an Appeal</h4>
-                <form action="/employee/file-appeal/{{complaint.id}}" method="POST">
-                    {% csrf_token %}
-                    <textarea required name="exp" class="form-control" style="resize: none;height: 150px;" placeholder="Your Explanation..."></textarea><br>
-                    <button class="btn btn-danger">File Appeal</button>
-                </form>
-                {% endif %}
-                {% endif %}
-                {% endif %}
+               
               </div>
             <!-- Main Section Ends -->
             <br><br><br><br>
