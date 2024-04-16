@@ -142,7 +142,7 @@ class EditProfileView(View):
         emp = Employee.objects.filter(user=acc).last()
 
         dept = Department.objects.get(id=department_id)
-        category = Category.objects.get(id=category_id)
+        # category = Category.objects.get(id=category_id)
 
         acc.full_name = full_name
         acc.email = email
@@ -151,7 +151,7 @@ class EditProfileView(View):
         acc.pincode = pincode
 
         if acc.user_type == 'GOV_EMPLOYEE':
-            emp.category = category
+            # emp.category = category
             emp.department = dept
             emp.save()
 
