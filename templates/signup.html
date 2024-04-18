@@ -38,7 +38,7 @@
             <!-- Main section starts -->
             <br><br><br>
             <h1 style="text-align: center;color: white;">Signup</h1><br>
-            <form action="" method="POST">
+            <form action="" method="POST" style="background-color: white;padding: 17px;">
                 {% csrf_token %}
                 <input type="text" name="username" class="form-control" placeholder="Enter Username...*" required><br>
                 <input type="text" name="full_name" class="form-control" placeholder="Enter Fullname...*" required><br>
@@ -47,7 +47,8 @@
                 <input type="number" name="pincode" class="form-control" placeholder="Enter Pincode...*" required><br>
                 <input type="text" name="state" class="form-control" placeholder="Enter State...*" required><br>
                 <input type="text" name="country" class="form-control" placeholder="Enter Country...*" required><br>
-                <label for="user_type" style="color: white;">User Type</label>
+                <input type="text" name="des" class="form-control" placeholder="Enter Designation (for employee)...*" required><br>
+                <label for="user_type">User Type</label>
                 <select name="user_type" class="form-control">
                     <option value="USER">USER</option>
                     <option value="GOV_EMPLOYEE">GOV_EMPLOYEE</option>
@@ -56,9 +57,10 @@
                 <input type="text" name="address" class="form-control" placeholder="Enter Address...*" required><br>
                 <input type="password" name="password" class="form-control" placeholder="Enter Password...*" required><br>
                 <input type="password" name="password2" class="form-control" placeholder="Confirm Password...*" required><br>
+                <p >Must have atleast 8 characters for the password and atleast a number</p>
                 <input type="submit" class="form-control" style="background-color: blue;color: white;" value="Create Account"><br>
 
-                <a href="/accounts/login/" style="color: white;">Login to my Account</a>
+                <a href="/accounts/login/">Login to my Account</a>
             </form>
 
             <!-- Main Section Ends -->

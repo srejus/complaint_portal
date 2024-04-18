@@ -28,8 +28,10 @@
                         <img src="{% static 'img/logo.png' %}" alt="logo">
                     </div>
                     <div class="col-6 align-self-center text-right">
-                        <a href="/accounts/login/" class="text-white lead">Login</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="/accounts/signup" class="text-white lead">Register</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="/accounts/login/" class="text-black lead btn btn-primary" 
+                        style="background-color: white;color: black;">Login</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="/accounts/signup" class="text-black lead btn btn-primary"
+                        style="background-color: white;color: black;">Register</a>&nbsp;&nbsp;&nbsp;&nbsp;
 =                    </div>
                     
                 </div>
@@ -129,7 +131,7 @@
     
     
     <!-- contact -->
-    <div class="jumbotron jumbotron-fluid" id="contact" style="background-image: url(/static/img/contact-bk.jpg);">
+    <div class="jumbotron jumbotron-fluid" id="contact" style="background-image: url(/static/img/contact-bk.jpg);padding-top: 25px;">
         <div class="container my-5">
             <div class="row justify-content-between">
                 <div class="col-md-6 text-white">
@@ -145,7 +147,7 @@
                     </ul>
                 </div>
                 <div class="col-md-6">
-                    <form action="/contact" method="POST" id="contact">
+                    <!-- <form action="/contact" method="POST" id="contact">
                         {% csrf_token %}
                     	<div class="row">
 	                        <div class="form-group col-md-6">
@@ -162,7 +164,7 @@
 	                        <textarea class="form-control" id="message" rows="3"></textarea>
 	                    </div>
                         <button type="submit" class="btn font-weight-bold atlas-cta atlas-cta-wide cta-green my-3">Submit</button>
-                    </form>
+                    </form> -->
                 </div>
             </div>
         </div>

@@ -55,6 +55,13 @@ class LoginView(View):
     
 
 class SignupView(View):
+    def check_password(self,password):
+        if len(password) < 8:
+            return False
+        
+        has_number = any(char.isdigit() for char in password)
+        return has_number
+    
     def get(self,request):
         err = request.GET.get("err")
         return render(request,'signup.html',{'err':err})
@@ -71,9 +78,14 @@ class SignupView(View):
         country = request.POST.get("country")
         address = request.POST.get("address")
         user_type = request.POST.get("user_type")
+        des = request.POST.get("des")
         
         if password != password2:
             err = "Password not matching!"
+            return redirect(f"/accounts/signup?err={err}")
+        
+        if not self.check_password(password):
+            err = "Password must have 8 characters and atleast 1 letter!"
             return redirect(f"/accounts/signup?err={err}")
     
         user = User.objects.filter(username=username)
@@ -89,7 +101,8 @@ class SignupView(View):
         user = User.objects.create_user(username=username,email=email,password=password)
         acc = Account.objects.create(user=user,full_name=full_name,
                                      phone=phone, email=email,pincode=pincode,
-                                     address=address,country=country,state=state,user_type=user_type)
+                                     address=address,country=country,state=state,
+                                     user_type=user_type,des=des)
         
         if user_type == 'GOV_EMPLOYEE':
             Employee.objects.create(user=acc)

@@ -39,7 +39,7 @@
             <br><br><br>
             <style>
                 table{
-                    color: white;
+                    background-color: white;
                 }
 
                 @media (max-width: 576px) {
@@ -48,9 +48,9 @@
                 }
                 }
             </style>
-            <div class="container" style="color: white;">
-                <h1 style="text-align: center;color: white;">View Complaint {{complaint.complaint_title}}</h1><br>
-                <h5><b>[Q] {{complaint.complaint_title}}</b></h5><br>
+            <div class="container p-3"  style="background-color: white;">
+                <h1 style="text-align: center;">View Complaint {{complaint.complaint_title}}</h1><br>
+                <!-- <h5><b>[Q] {{complaint.complaint_title}}</b></h5><br> -->
                 <p>{{complaint.complaint_desc}}</p><br>
                 <p>Created at : {{complaint.created_at}}</p>
                 <p>STATUS : {{complaint.status}}</p>

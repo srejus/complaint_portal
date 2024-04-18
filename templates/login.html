@@ -38,34 +38,34 @@
             <!-- Main section starts -->
             <br><br><br>
             <h1 style="text-align: center;color: white;">Login</h1><br>
-            <form action="" method="POST">
+            <form action="" method="POST" style="background-color: white;padding: 17px;">
                 {% csrf_token %}
                 <input type="text" name="username" class="form-control" placeholder="Enter Username...*" required><br>
                 <input type="password" name="password" class="form-control" placeholder="Enter Password...*" required><br>
-                <label for="" style="color: white;">Login as</label>
+                <label for="">Login as</label>
                 <div style="display: flex;flex-direction: row;">
                     <div class="form-check" style="margin-left: 25px;margin-right: 15px;">
                         <input class="form-check-input" type="radio" name="user_type" id="exampleRadio1" value="user" checked>
-                        <label class="form-check-label" for="exampleRadio1" style="margin-left: -20px;margin-bottom: 10px;color: white;">
+                        <label class="form-check-label" for="exampleRadio1" style="margin-left: -20px;margin-bottom: 10px">
                           User
                         </label>
                       </div>
                     <div class="form-check" style="margin-left: 25px;margin-right: 15px;">
                         <input class="form-check-input" type="radio" name="user_type" id="exampleRadio1" value="employee">
-                        <label class="form-check-label" for="exampleRadio1" style="margin-left: -20px;margin-bottom: 10px;color: white;">
+                        <label class="form-check-label" for="exampleRadio1" style="margin-left: -20px;margin-bottom: 10px;">
                           Employee
                         </label>
                       </div>
                     <div class="form-check" style="margin-left: 25px;">
                     <input class="form-check-input" type="radio" name="user_type" id="exampleRadio1" value="admin">
-                    <label class="form-check-label" for="exampleRadio1" style="margin-left: -20px;margin-bottom: 10px;color: white;">
+                    <label class="form-check-label" for="exampleRadio1" style="margin-left: -20px;margin-bottom: 10px;">
                         Admin
                     </label>
                     </div>
                 </div>
                 <input type="submit" class="form-control" style="background-color: blue;color: white;" value="Login"><br>
 
-                <a href="/accounts/signup" style="color: white;">Create new Account</a><br>
+                <a href="/accounts/signup">Create new Account</a><br>
 
                
             </form>

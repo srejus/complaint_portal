@@ -41,7 +41,6 @@
             <h1 style="text-align: center;color: white;">Register Complaint</h1><br>
             <form action="" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
-                <input type="text" name="complaint_title" class="form-control" placeholder="Compliant Title*" required><br>
                 <textarea name="complaint_desc" style="resize: none;height: 150px;" class="form-control" placeholder="Complaint Description...*" required></textarea><br>
 
                 <select name="eid" class="form-control">
