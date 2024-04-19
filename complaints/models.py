@@ -35,7 +35,7 @@ class Complaint(models.Model):
     user = models.ForeignKey(Account,on_delete=models.CASCADE,related_name='complaint_user')
     employee_id = models.ForeignKey(Employee,on_delete=models.CASCADE,related_name='complaint_employee')
     proof = models.FileField(null=True,blank=True)
-    complaint_title = models.CharField(max_length=100)
+    complaint_title = models.CharField(max_length=100,null=True,blank=True)
     category = models.CharField(max_length=100,null=True,blank=True)
     complaint_desc = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
