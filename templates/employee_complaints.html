@@ -52,7 +52,7 @@
                     <thead>
                       <tr>
                         <th style="width: 100px;">Complaint ID</th>
-                        <th style="width: 200px;">Complaint Title</th>
+                        <!-- <th style="width: 200px;">Complaint Title</th> -->
                         <th style="width: 100px;">Status</th>
                         <th style="width: 100px;">Action</th>
                       </tr>
@@ -61,7 +61,7 @@
                         {% for c in complaints %}
                       <tr>
                         <td style="width: 100px;"># {{c.id}}</td>
-                        <td style="width: 200px;">{{c.complaint_title}}</td>
+                        <!-- <td style="width: 200px;">{{c.complaint_title}}</td> -->
                         <td style="width: 100px;">{{c.status}}</td>
                         <td style="min-width: 100px;">
                             <button class="btn btn-primary" onclick="window.location.href='/employee/{{c.id}}'">View Complaint</button>
